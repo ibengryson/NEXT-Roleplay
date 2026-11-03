@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d18">
+  <meta name="description" content="Next Roleplay — beleef jouw verhaal. Een nieuwe wereld, jouw keuzes.">
+  <title>Next Roleplay | Jouw verhaal begint hier</title>
+  <style>
+    :root{--bg:#080d18;--panel:#101a2b;--blue:#2588ff;--cyan:#55c8ff;--text:#f4f7fb;--muted:#aab6c8}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1120px,90%);margin:auto}
+    header{position:fixed;inset:0 0 auto;z-index:10;background:#080d18dc;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff12}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-size:1.25rem;font-weight:900;letter-spacing:2px}.brand span{color:var(--blue)}
+    .links{display:flex;gap:28px;color:#d3dbea;font-size:.92rem}
+    .links a:hover{color:var(--cyan)}
+    .menu{display:none;background:none;border:0;color:white;font-size:1.5rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;border-radius:7px;font-weight:800;letter-spacing:.3px;transition:.2s;border:1px solid transparent}
+    .primary{background:linear-gradient(120deg,var(--blue),#1763d5);box-shadow:0 8px 28px #1676ff38}
+    .primary:hover{transform:translateY(-2px);filter:brightness(1.12)}
+    .outline{border-color:#ffffff38;background:#ffffff08}.outline:hover{border-color:var(--cyan);background:#2588ff18}
+    .hero{min-height:760px;padding:150px 0 100px;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 75% 40%,#1457a744,transparent 38%),linear-gradient(120deg,#080d18 35%,#0c1a30 100%)}
+    .hero:before{content:"";position:absolute;width:560px;height:560px;border:1px solid #4daaff20;border-radius:50%;right:-100px;top:100px;box-shadow:0 0 0 65px #4daaff08,0 0 0 130px #4daaff05}
+    .hero-content{position:relative;max-width:700px}
+    .eyebrow{color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:3px;font-size:.78rem;margin-bottom:18px}
+    h1{font-size:clamp(3.2rem,8vw,6.5rem);line-height:.98;letter-spacing:-4px;margin-bottom:24px}
+    h1 span{color:var(--blue)}
+    .lead{font-size:1.15rem;color:var(--muted);max-width:570px;margin-bottom:32px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap}
+    .scroll-note{margin-top:70px;color:#8190a7;font-size:.75rem;letter-spacing:2px;text-transform:uppercase}
+    section{padding:95px 0}
+    .section-head{text-align:center;max-width:650px;margin:0 auto 48px}
+    .section-head h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:14px}
+    .section-head p{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(145deg,#121e31,#0d1524);border:1px solid #ffffff12;border-radius:12px;padding:28px;min-height:220px;transition:.25s}
+    .card:hover{transform:translateY(-5px);border-color:#2588ff77}
+    .symbol{width:46px;height:46px;border-radius:10px;background:#2588ff20;color:var(--cyan);display:grid;place-items:center;font-size:1.3rem;margin-bottom:22px}
+    .card h3{font-size:1.2rem;margin-bottom:9px}.card p{color:var(--muted);font-size:.94rem}
+    .about{background:#0b1321;border-block:1px solid #ffffff0c}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+    .about h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:20px}
+    .about p{color:var(--muted);margin-bottom:18px}
+    .statbox{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .stat{padding:24px;background:#121e31;border:1px solid #ffffff12;border-radius:10px}
+    .stat strong{display:block;font-size:2rem;color:var(--cyan)}.stat span{font-size:.85rem;color:var(--muted)}
+    .join{background:radial-gradient(ellipse at 50% 100%,#155ab044,transparent 60%)}
+    .join-box{text-align:center;padding:65px 28px;border-radius:16px;border:1px solid #2588ff55;background:linear-gradient(135deg,#112744,#0d1728)}
+    .join-box h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:12px}.join-box p{color:var(--muted);margin:0 auto 27px;max-width:560px}
+    footer{padding:28px 0;border-top:1px solid #ffffff12;color:#8794a8;font-size:.85rem}
+    footer .wrap{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(max-width:760px){.links{display:none;position:absolute;top:76px;left:0;right:0;padding:22px 5%;background:#0a1220;flex-direction:column;gap:17px}.links.open{display:flex}.menu{display:block}.nav-cta{display:none}.hero{min-height:690px}.grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.hero:before{right:-370px;opacity:.6}h1{letter-spacing:-2px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#home">NEXT<span>.</span> ROLEPLAY</a>
+      <div class="links" id="links">
+        <a href="#home">Home</a><a href="#over">Over ons</a><a href="#mogelijkheden">Mogelijkheden</a><a href="#join">Join</a>
+      </div>
+      <a class="btn primary nav-cta" href="https://discord.gg/JOUWINVITELINK" target="_blank" rel="noopener">Discord <span aria-hidden="true"> ↗</span></a>
+      <button class="menu" aria-label="Menu openen" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="hero-content">
+        <div class="eyebrow">FiveM · Serious Roleplay</div>
+        <h1>JOUW VERHAAL.<br><span>JOUW NEXT.</span></h1>
+        <p class="lead">Welkom bij Next Roleplay. Stap in een levendige wereld, ontmoet nieuwe mensen en bouw jouw eigen verhaal op. Elke keuze brengt je verder.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://discord.gg/JOUWINVITELINK" target="_blank" rel="noopener">Word lid van Discord ↗</a>
+          <a class="btn outline" href="#over">Ontdek de stad</a>
+        </div>
+        <div class="scroll-note">Scroll om meer te ontdekken &nbsp; ↓</div>
+      </div>
+    </div>
+  </section>
+  <section id="over" class="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">Welkom in Next</div>
+        <h2>Meer dan een stad.<br>Een nieuwe wereld.</h2>
+        <p>Bij Next Roleplay draait alles om sterke verhalen, leuke ontmoetingen en realistische roleplay. Of je nu kiest voor een carrière bij de hulpdiensten, een eigen onderneming start of je eigen pad volgt: de stad ligt aan jouw voeten.</p>
+        <p>Maak herinneringen, werk samen en geef jouw personage een verhaal dat blijft hangen.</p>
+        <a class="btn outline" href="https://discord.gg/JOUWINVITELINK" target="_blank" rel="noopener">Praat met de community ↗</a>
+      </div>
+      <div class="statbox">
+        <div class="stat"><strong>24/7</strong><span>Jouw verhaal wacht</span></div>
+        <div class="stat"><strong>∞</strong><span>Mogelijkheden</span></div>
+        <div class="stat"><strong>RP</strong><span>Beleef roleplay</span></div>
+        <div class="stat"><strong>NL</strong><span Nederlandstalige community</span></div>
+      </div>
+    </div>
+  </section>
+  <section id="mogelijkheden">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Wat ga jij doen?</div>
+        <h2>Jouw pad. Jouw keuzes.</h2>
+        <p>Ontdek de verschillende manieren waarop jij jouw verhaal in Next Roleplay kunt schrijven.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><div class="symbol">✦</div><h3>Hulpdiensten</h3><p>Bescherm de inwoners, help mensen in nood en maak het verschil in de stad.</p></article>
+        <article class="card"><div class="symbol">⌂</div><h3>Ondernemen</h3><p>Bouw aan je eigen zaak, ontmoet klanten en groei uit tot een bekende ondernemer.</p></article>
+        <article class="card"><div class="symbol">⚡</div><h3>Crimineel leven</h3><p>Neem risico's, smeed plannen en ontdek de andere kant van de stad binnen de RP-regels.</p></article>
+        <article class="card"><div class="symbol">◈</div><h3>Voertuigen</h3><p>Ontdek verschillende voertuigen en geef jouw eigen stijl aan je leven in de stad.</p></article>
+        <article class="card"><div class="symbol">◎</div><h3>Community</h3><p>Leer nieuwe mensen kennen, werk samen en maak onvergetelijke RP-momenten.</p></article>
+        <article class="card"><div class="symbol">＋</div><h3>Jouw verhaal</h3><p>Er is altijd ruimte voor nieuwe ideeën. Wat wordt jouw volgende stap?</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="join" id="join">
+    <div class="wrap">
+      <div class="join-box">
+        <div class="eyebrow">Klaar voor jouw volgende stap?</div>
+        <h2>Next Roleplay wacht op jou.</h2>
+        <p>Sluit je aan bij onze Discord-community, blijf op de hoogte en ontdek wanneer je de stad kunt betreden.</p>
+        <a class="btn primary" href="https://discord.gg/JOUWINVITELINK" target="_blank" rel="noopener">Join de Discord ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>© <span id="year"></span> Next Roleplay. Alle rechten voorbehouden.</span><span>Een verhaal. Duizend mogelijkheden.</span></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
